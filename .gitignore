@@ -1,3 +1,13 @@
+# Runtime artifacts
+builder.log.*
+log.txt
+tmp_raw_log
+meta_data.json
+meson-logs/
+
+# macOS
+.DS_Store
+
 # Prerequisites
 *.d
 
