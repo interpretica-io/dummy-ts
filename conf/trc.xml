@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<trc_db unknown_exp_status="passed_ok">
+  <test name="dummy-ts" type="package">
+    <objective>Dummy Test Suite</objective>
+    <notes />
+    <iter result="PASSED">
+      <notes />
+      <test name="prologue" type="script">
+        <objective>Test suite prologue</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+        </iter>
+      </test>
+      <test name="experiment" type="package">
+        <objective>Experiment tests</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+          <test name="prologue" type="script">
+            <objective>Experiment group prologue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+          <test name="dummy_test" type="script">
+            <objective>Dummy experiment test</objective>
+            <notes />
+            <iter result="PASSED">
+              <arg name="scenario">pass</arg>
+              <notes />
+            </iter>
+            <iter result="PASSED">
+              <arg name="scenario">fail</arg>
+              <notes />
+            </iter>
+            <iter result="FAILED">
+              <arg name="scenario">expected_fail</arg>
+              <notes />
+              <results>
+                <result value="FAILED">
+                  <verdict>Experiment iteration failed: known issue (expected failure)</verdict>
+                </result>
+              </results>
+            </iter>
+          </test>
+          <test name="epilogue" type="script">
+            <objective>Experiment group epilogue</objective>
+            <notes />
+            <iter result="PASSED">
+              <notes />
+            </iter>
+          </test>
+        </iter>
+      </test>
+      <test name="epilogue" type="script">
+        <objective>Test suite epilogue</objective>
+        <notes />
+        <iter result="PASSED">
+          <notes />
+        </iter>
+      </test>
+    </iter>
+  </test>
+</trc_db>

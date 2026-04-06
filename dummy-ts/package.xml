@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Dummy Test Suite</description>
+
+    <!-- @page dummy-ts Dummy Test Suite
+          @objective Minimal test suite skeleton with a single experiment group.
+
+          @par Test Groups:
+          - @ref dummy-experiment - Experiment tests demonstrating charts, verdicts, and iterations
+    -->
+
+    <author mailto="maxim.menshikov@interpretica.io" />
+
+    <session track_conf="silent">
+        <!-- @page dummy-ts-prologue Test Suite Prologue
+              @objective Prepare test environment for all test groups.
+
+              @par Scenario:
+              -# No special setup is required for this empty test suite skeleton.
+        -->
+        <prologue>
+            <script name="prologue">
+                <objective>
+                    Prepare test environment.
+
+                    - No special setup is required for this skeleton test suite.
+
+                    @md
+                </objective>
+            </script>
+        </prologue>
+
+        <!-- @page dummy-ts-epilogue Test Suite Epilogue
+              @objective Finalize test execution and clean up resources.
+
+              @par Scenario:
+              -# No cleanup actions are required.
+        -->
+        <epilogue>
+            <script name="epilogue">
+                <objective>
+                    Finalize test execution.
+
+                    - No cleanup actions are required for this skeleton test suite.
+
+                    @md
+                </objective>
+            </script>
+        </epilogue>
+
+        <!-- @page dummy-experiment Experiment Tests
+              @objective Run experiment group demonstrating charts, verdicts, and multiple iterations.
+              @see @ref dummy-experiment-dummy_test
+        -->
+        <run>
+            <package name="experiment" />
+        </run>
+    </session>
+</package>

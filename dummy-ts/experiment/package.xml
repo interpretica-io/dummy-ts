@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<package version="1.0">
+    <description>Experiment tests</description>
+
+    <!-- @page dummy-experiment Experiment Tests
+          @objective Demonstrate test group structure with charts, verdicts, and multiple iterations.
+
+          @par Test Groups:
+          - @ref dummy-experiment-dummy_test - Dummy test with passing and failing iterations
+
+          @par Notes:
+          - One iteration passes successfully.
+          - One iteration fails unexpectedly.
+          - One iteration fails expectedly (known issue).
+    -->
+
+    <author mailto="maxim.menshikov@interpretica.io" />
+
+    <session track_conf="silent">
+        <!-- @page dummy-experiment-prologue Experiment Group Prologue
+              @objective Prepare the experiment group environment.
+
+              @par Scenario:
+              -# No special setup is required for this experiment group.
+        -->
+        <prologue>
+            <script name="prologue">
+                <objective>
+                    Prepare experiment group environment.
+
+                    - No special setup is required.
+
+                    @md
+                </objective>
+            </script>
+        </prologue>
+
+        <!-- @page dummy-experiment-epilogue Experiment Group Epilogue
+              @objective Finalize the experiment group environment.
+
+              @par Scenario:
+              -# No cleanup actions are required for this experiment group.
+        -->
+        <epilogue>
+            <script name="epilogue">
+                <objective>
+                    Finalize experiment group environment.
+
+                    - No cleanup actions are required.
+
+                    @md
+                </objective>
+            </script>
+        </epilogue>
+
+        <!-- @page dummy-experiment-dummy_test Experiment Dummy Test
+              @objective Run a dummy experiment test that demonstrates charts and verdicts.
+
+              @par Test Parameters:
+              | Parameter | Values                         | Description                        |
+              |===========|================================|====================================|
+              | scenario  | pass / fail / expected_fail    | Controls the iteration outcome     |
+
+              @par Scenario:
+              -# Parse the scenario parameter.
+              -# Initialize the experiment chart.
+              -# Simulate pass or fail depending on the scenario.
+              -# Record the metric in the chart.
+              -# Print and finalize the chart.
+              -# Emit a verdict and fail for fail and expected_fail scenarios.
+
+              @par Expected Results:
+              - scenario=pass: completes successfully with metric value 42.
+              - scenario=fail: fails unexpectedly (regression).
+              - scenario=expected_fail: fails as a known issue (expected by TRC).
+        -->
+        <run name="dummy_test">
+            <script name="dummy_test">
+                <objective>
+                    Dummy experiment test demonstrating charts and verdicts.
+
+                    - Uses tsapi_evo charts to record metrics per iteration.
+                    - Emits a test verdict on failure.
+                    - scenario=pass: passes with metric value 42.
+                    - scenario=fail: fails unexpectedly with metric value 0.
+                    - scenario=expected_fail: fails as a known issue with metric value 0.
+
+                    @md
+                </objective>
+            </script>
+
+            <arg name="scenario">
+                <value>pass</value>
+                <value>fail</value>
+                <value>expected_fail</value>
+            </arg>
+        </run>
+    </session>
+</package>
