@@ -70,7 +70,7 @@ RUN apt-get update && \
 
 RUN echo "${USER} ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-RUN if [ "$DOCKER_GID" != "${GID}" ] ; then groupadd --gid ${GID} ${USER} ; fi
+RUN if [ "$DOCKER_GID" != "${GID}" ] && ! getent group ${GID} >/dev/null; then groupadd --gid ${GID} ${USER} ; fi
 
 RUN useradd --system \
             --gid ${GID} --gid ${DOCKER_GID} \

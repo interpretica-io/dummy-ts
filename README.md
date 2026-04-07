@@ -4,7 +4,7 @@ Minimal test suite skeleton built on the [Test Environment](https://ts-factory.i
 
 ## Structure
 
-```
+```t
 dummy-ts/
 ├── dummy-ts/               # Test suite source
 │   ├── lib/                # tsapi_evo — charts and hints library
@@ -37,10 +37,10 @@ git clone https://github.com/ts-factory/test-environment.git ../test-environment
 
 The suite runs two iterations of `dummy_test`:
 
-| Iteration | `should_fail` | Result |
-|-----------|---------------|--------|
-| 1 | `FALSE` | pass — metric = 42 |
-| 2 | `TRUE` | FAILED — metric = 0, verdict emitted |
+| Iteration | `should_fail` | Result                               |
+|-----------|---------------|--------------------------------------|
+| 1         | `FALSE`       | pass — metric = 42                   |
+| 2         | `TRUE`        | FAILED — metric = 0, verdict emitted |
 
 ## Results
 
