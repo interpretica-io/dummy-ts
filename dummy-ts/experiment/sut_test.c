@@ -19,7 +19,6 @@ main(int argc, char **argv)
 {
     const char *sut_bin;
     int         status;
-    int         rc;
 
     TEST_START;
 
