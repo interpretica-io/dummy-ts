@@ -95,5 +95,38 @@
                 <value>expected_fail</value>
             </arg>
         </run>
+
+        <!-- @page dummy-experiment-sut_test SUT Smoke Test
+              @objective Run the SUT binary and verify it exits successfully.
+
+              @par Test Parameters:
+              | Parameter | Values          | Description                      |
+              |===========|=================|==================================|
+              | sut_bin   | path or empty   | Path to built SUT binary         |
+
+              @par Scenario:
+              -# Read sut_bin parameter; skip if empty.
+              -# Execute the binary with system().
+              -# Fail with verdict if exit code is non-zero.
+
+              @par Expected Results:
+              - sut_bin set: passes when SUT exits 0, fails otherwise.
+              - sut_bin empty: test is skipped.
+        -->
+        <run name="sut_test">
+            <script name="sut_test">
+                <objective>
+                    Smoke-test the SUT binary at sut_bin path.
+
+                    - Skipped if sut_bin is empty (no SUT configured).
+                    - Fails with verdict if exit code is non-zero.
+
+                    @md
+                </objective>
+            </script>
+            <arg name="sut_bin">
+                <value>${SUT_BIN}</value>
+            </arg>
+        </run>
     </session>
 </package>

@@ -4,6 +4,7 @@ tests = [
     'prologue',
     'epilogue',
     'dummy_test',
+    'sut_test',
 ]
 
 foreach test : tests
