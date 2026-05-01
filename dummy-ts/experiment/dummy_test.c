@@ -12,6 +12,10 @@
 
 #define TE_TEST_NAME    "experiment/dummy_test"
 
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+
 #include "te_config.h"
 #include "tapi_test.h"
 #include "tsapi_evo.h"
@@ -45,6 +49,10 @@ main(int argc, char **argv)
     tsapi_evo_analysis_hint(
         "Experiment dummy test. Three iterations: one passes, one fails "
         "unexpectedly, one fails expectedly (known issue).");
+
+    TEST_STEP("Simulate workload delay");
+    srand((unsigned int)time(NULL));
+    sleep(10 + rand() % 11);
 
     TEST_STEP("Initialize experiment chart");
     tsapi_evo_schart_init(&chart, "Experiment", "Dummy Metric / Scenario",
