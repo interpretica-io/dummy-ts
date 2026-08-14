@@ -18,6 +18,7 @@
 
 #include "te_config.h"
 #include "tapi_test.h"
+#include "tapi_dummy.h"
 #include "tsapi_evo.h"
 
 typedef enum dummy_scenario {
@@ -45,6 +46,9 @@ main(int argc, char **argv)
 
     TEST_STEP("Parse test parameters");
     TEST_GET_ENUM_PARAM(scenario, DUMMY_SCENARIO_LIST);
+
+    TEST_STEP("Check the external TAPI (tsf-dummy repository)");
+    RING("External TAPI says: %s", tapi_dummy_greeting());
 
     tsapi_evo_analysis_hint(
         "Experiment dummy test. Three iterations: one passes, one fails "

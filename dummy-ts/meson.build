@@ -20,6 +20,7 @@ test_deps = [
 ]
 
 te_libs = [
+    'tapi_dummy',
     'tapi_env',
     'tapi_job',
     'tapi_rpc',
