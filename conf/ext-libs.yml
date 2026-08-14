@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2026 Interpretica Unipessoal Lda
+#
+# External TE libraries catalog (passed to dispatcher.sh with
+# --ext-libs). Versions of external repositories are pinned here;
+# builder.conf binds their libraries to platforms with
+# TE_EXT_REPO_USE and their agent types with TE_TA_TYPE.
+
+repositories:
+  - name: tsf_dummy
+    url: https://github.com/interpretica-io/tsf-dummy.git
+    ref: v1.0.0
+    libs:
+      - tapi_dummy
+    agents:
+      - dummy_agent

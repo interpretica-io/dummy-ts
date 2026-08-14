@@ -116,6 +116,7 @@ TS_CONF_DIRS+="\"${TS_TOPDIR}\"/conf:"
 TS_DEFAULT_OPTS=
 
 TS_DEFAULT_OPTS+="--conf-dirs=${TS_CONF_DIRS} "
+TS_DEFAULT_OPTS+="--ext-libs=ext-libs.yml "
 TS_DEFAULT_OPTS+="--build-parallel "
 TS_DEFAULT_OPTS+="--trc-db=\"${TS_TOPDIR}\"/conf/trc.xml "
 TS_DEFAULT_OPTS+="--trc-tag=trc_test1 --trc-tag=trc_test2 "
