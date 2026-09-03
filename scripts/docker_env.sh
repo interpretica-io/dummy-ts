@@ -68,6 +68,21 @@ if [ "$?" != "0" ] ; then
 fi
 popd
 
+# Forward the SSH agent when there is one: a CI job hands its git
+# credentials over as an agent socket (Jenkins sshagent does), and a
+# passphrase-protected key is unusable without it. Docker Desktop
+# exposes the host agent at a fixed path of its own.
+SSH_AGENT_ARGS=""
+if [ -n "${SSH_AUTH_SOCK:-}" ] ; then
+    if [ "$(uname -s)" == "Darwin" ] ; then
+        agent_sock="/run/host-services/ssh-auth.sock"
+    else
+        agent_sock="${SSH_AUTH_SOCK}"
+    fi
+    SSH_AGENT_ARGS="-v ${agent_sock}:${agent_sock}"
+    SSH_AGENT_ARGS="${SSH_AGENT_ARGS} -e SSH_AUTH_SOCK=${agent_sock}"
+fi
+
 # Run docker image
 docker run --platform linux/amd64 --rm -i \
        --network host \
@@ -78,5 +93,6 @@ docker run --platform linux/amd64 --rm -i \
        ${ENV_VARS} \
        ${TE_DOCKER_WORK_DIR:+-w "${TE_DOCKER_WORK_DIR}"} \
        -v ~/.ssh:/home/${USER}/.ssh \
+       ${SSH_AGENT_ARGS} \
        -v ${docker_sock}:${docker_sock} \
        ${USER}/${TE_DOCKER_TAG} $@
