@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2026 Interpretica Unipessoal Lda
+#
+# External TE repositories catalog (passed to dispatcher.sh with
+# --external). builder.conf binds their libraries to platforms with
+# TE_EXT_REPO_USE and their agent types with TE_TA_TYPE.
+#
+# The reference below says which tag to follow; the commit actually
+# built is recorded in conf/builder.conf.lock, which is committed
+# alongside this file. Run dispatcher.sh --update-external to move
+# it on.
+
+repositories:
+  - name: tsf_dummy
+    url: https://github.com/interpretica-io/tsf-dummy.git
+    ref: v1.1.0
+    libs:
+      - tapi_dummy
+    agents:
+      - dummy_agent
