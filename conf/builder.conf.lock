@@ -1,0 +1,4 @@
+# External repositories pinned by the Test Environment Builder.
+# Commit this file: it is what makes a build reproducible.
+# Run dispatcher.sh --update-external to move the records on.
+tsf_dummy https://github.com/interpretica-io/tsf-dummy.git v1.1.0 392cab81ddaa925c9128b102e7936b026aaabc8b
